@@ -1,7 +1,5 @@
 #! /bin/bash
 
-CURR_IP=$(grep bindIp /etc/mongod.conf | awk '{print $2}')
-
 # checking if user has root previlages
 
 if [ $(id -u) -ne 0 ]; then
@@ -40,6 +38,8 @@ else
 fi 
 
 #checking binding IP of mongodb and changing it to 0.0.0.0
+
+CURR_IP=$(grep bindIp /etc/mongod.conf | awk '{print $2}')
 
 if [ "$CURR_IP" == "0.0.0.0" ]; then
     echo "Bind IP is already set to 0.0.0.0"
