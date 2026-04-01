@@ -6,6 +6,7 @@ CURR_IP=$(grep bindIp /etc/mongod.conf | awk '{print $2}')
 
 if [ $(id -u) -ne 0 ]; then
     echo "Run with root previlages"
+    exit 1
 fi
 
 #adding mongo repo
@@ -14,6 +15,7 @@ echo "creating mongo repo..."
 
 if [ -f /etc/yum.repos.d/mongo.repo ]; then
     echo "Mongo repo already exists"
+    exit
 else
     cat <<EOF > /etc/yum.repos.d/mongo.repo
 [mongodb-org-7.0]
