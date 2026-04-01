@@ -9,7 +9,7 @@ if [ $(id -u) -ne 0 ]; then
     exit 1
 fi
 
-dnf list installed mysql > /dev/null
+dnf list installed mysql &> /dev/null
 if [ $? -eq 0 ]; then
     echo -e "$Y mysql already installed...SKIPPING INSTALLATION $Y"
     exit 1
