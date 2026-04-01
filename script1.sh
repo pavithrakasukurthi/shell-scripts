@@ -5,5 +5,5 @@ G="\033[32m"
 if [ $NUM -eq 0 ]; then
     echo -e "$R$NUM is Zero"
 else
-    echo "$G$NUM is not zero"
+    echo -e "$G$NUM is not zero"
 fi
