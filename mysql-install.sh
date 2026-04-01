@@ -14,6 +14,6 @@ if [ $? -eq 0 ]; then
     echo -e "$Y mysql already installed...SKIPPING INSTALLATION $Y"
     exit 1
 else
-    dnf install mysql -y
+    dnf install mysql -y &> /dev/null
     echo -e "$G INSTALLATION SUCESS"
 fi
