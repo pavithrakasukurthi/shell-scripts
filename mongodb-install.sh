@@ -29,6 +29,7 @@ fi
 dnf list installed mongodb &> /var/log/mongodb.log_$(date +%Y-%m-%d)
 
 if [ $? -ne 0 ]; then
+    echo "Installing mongodb..."
     dnf install mongodb-org -y &> /var/log/mongodb.log_$(date +%Y-%m-%d)
 else
     echo "mongodb already installed...Skipping installation"
