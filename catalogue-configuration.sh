@@ -67,6 +67,7 @@ if [ $? -eq 0 ]; then
     echo "Catalogue is up and running"
 else
     "Catalogue is not running"
+    exit 1
 fi 
 
 #adding mongo repo
@@ -75,7 +76,7 @@ echo "creating mongo repo..."
 
 if [ -f /etc/yum.repos.d/mongo.repo ]; then
     echo "Mongo repo already exists"
-    exit
+    exit 1
 else
     cat <<EOF > /etc/yum.repos.d/mongo.repo
 [mongodb-org-7.0]
