@@ -71,7 +71,7 @@ service_file_check(){
         systemctl start $SERVICE_NAME
         systemctl status $SERVICE_NAME &> /var/log/catalogue.log_$(date +%Y-%m-%d)
         validate $? "$SERVICE_NAME is up and running"
-for
+
     else
         echo "creating $SERVICE_NAME service file..."
         cp -p "$SERVICE_NAME.service" /etc/systemd/system/$SERVICE_NAME.service
