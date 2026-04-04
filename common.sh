@@ -41,6 +41,7 @@ nodejs_installation(){
 
 #function for app configuration
 app_configuration(){
+    SERVICE_NAME=$1
     echo "configuring app"
     mkdir /app
     curl -o /tmp/"$SERVICE_NAME".zip https://roboshop-artifacts.s3.amazonaws.com/"$SERVICE_NAME"-v3.zip 
@@ -62,6 +63,7 @@ sys_user_check(){
 
 #function to check if service file already exists and create one if not
 service_file_check(){
+    SERVICE_NAME=$1
     echo "checking for service file"
     if [ -f /etc/systemd/system/"$SERVICE_NAME".service ]; then
         echo "$SERVICE_NAME service file exists"
@@ -88,6 +90,8 @@ service_file_check(){
 
 #function to create mongo repo
 create_repo(){
+     repo_name=$1
+     
     echo "creating $repo_name repo"
     if [ -f /etc/yum.repos.d/"$repo_name.repo" ]; then
         echo "Mongo repo already exists"
