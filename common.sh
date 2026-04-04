@@ -17,6 +17,7 @@ validate(){
     else
         echo "Failed"
         exit 1
+    fi 
 }
 
 #function to check nodejs installtion and install it if not already installed
