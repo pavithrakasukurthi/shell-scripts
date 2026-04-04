@@ -89,10 +89,10 @@ service_file_check(){
 #function to create mongo repo
 create_repo(){
     echo "creating $repo_name repo"
-    if [ -f /etc/yum.repos.d/$repo_name.repo ]; then
+    if [ -f /etc/yum.repos.d/"$repo_name.repo" ]; then
         echo "Mongo repo already exists"
     else
-        cp -p $repo_name.repo /etc/yum.repos.d/$repo_name.repo
+        cp -p "$repo_name.repo" /etc/yum.repos.d/"$repo_name.repo"
         validate $? "$repo_name repo created"
     fi
 }
