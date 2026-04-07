@@ -46,7 +46,7 @@ app_configuration(){
     mkdir /app
     curl -o /tmp/"$SERVICE_NAME".zip https://roboshop-artifacts.s3.amazonaws.com/"$SERVICE_NAME"-v3.zip &> /dev/null
     cd /app 
-    unzip /tmp/"$SERVICE_NAME".zip
+    unzip /tmp/"$SERVICE_NAME".zip &> /dev/null
 }
 
 #function to check if system user already exists and create one if not.
