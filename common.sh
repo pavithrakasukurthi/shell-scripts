@@ -43,7 +43,12 @@ nodejs_installation(){
 app_configuration(){
     SERVICE_NAME=$1
     echo "configuring app"
-    mkdir /app
+    if [ -d /app ]; then
+        echo "/app already exists...SKIPPING CREATION!"
+    else
+        echo "creating /app"
+        mkdir /app
+    fi 
     curl -o /tmp/"$SERVICE_NAME".zip https://roboshop-artifacts.s3.amazonaws.com/"$SERVICE_NAME"-v3.zip &> /dev/null
     cd /app 
     unzip /tmp/"$SERVICE_NAME".zip &> /dev/null
