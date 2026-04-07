@@ -44,7 +44,7 @@ app_configuration(){
     SERVICE_NAME=$1
     echo "configuring app"
     mkdir /app
-    curl -o /tmp/"$SERVICE_NAME".zip https://roboshop-artifacts.s3.amazonaws.com/"$SERVICE_NAME"-v3.zip 
+    curl -o /tmp/"$SERVICE_NAME".zip https://roboshop-artifacts.s3.amazonaws.com/"$SERVICE_NAME"-v3.zip &> /dev/null
     cd /app 
     unzip /tmp/"$SERVICE_NAME".zip
 }
@@ -52,7 +52,7 @@ app_configuration(){
 #function to check if system user already exists and create one if not.
 sys_user_check(){
     echo "validating system user configuration"
-    id roboshop
+    id roboshop &> /dev/null
     if [ $? -eq 0 ]; then
         echo "system user already exists, skipping..."
     else
@@ -76,7 +76,7 @@ service_file_check(){
 
     else
         echo "creating $SERVICE_NAME service file..."
-        cp -p "$SERVICE_NAME.service" /etc/systemd/system/$SERVICE_NAME.service
+        cp -p "$SERVICE_NAME.service" /etc/systemd/system/"$SERVICE_NAME.service"
         validate $? "$SERVICE_NAME Service file copied"
 
         systemctl daemon-reload
