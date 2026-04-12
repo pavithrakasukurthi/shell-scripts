@@ -17,7 +17,7 @@ if [ "$CURR_IP" == "0.0.0.0" ]; then
 else
     echo "taking backup of conf file"
     cp -p /etc/redis/redis.conf /etc/redis/redis.conf_$(date +%Y-%m-%d)
-    sed -i 's/bind:.*/bind: 0.0.0.0/' /etc/redis/redis.conf
+    sed -i 's/bind .*/bind 0.0.0.0/' /etc/redis/redis.conf
     validate $? "bindIp updated..."
     sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
     echo "changed protected-mode to no and restarting the service"
