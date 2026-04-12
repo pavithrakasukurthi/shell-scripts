@@ -81,7 +81,7 @@ service_file_check(){
 
     else
         echo "creating $1 service file..."
-        cp -p "$1.service" /etc/systemd/system/"$1.service"
+        cp -p /home/ec2-user/shell-scripts/"$1.service" /etc/systemd/system/"$1.service"
         validate $? "$1 Service file copied"
 
         systemctl daemon-reload
