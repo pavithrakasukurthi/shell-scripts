@@ -70,25 +70,25 @@ sys_user_check(){
 service_file_check(){
     SERVICE_NAME=$1
     echo "checking for service file"
-    if [ -f /etc/systemd/system/"$SERVICE_NAME".service ]; then
-        echo "$SERVICE_NAME service file exists"
-        echo "Reloading and enabling $SERVICE_NAME service"
+    if [ -f /etc/systemd/system/"$1".service ]; then
+        echo "$1 service file exists"
+        echo "Reloading and enabling $1 service"
         systemctl daemon-reload
-        systemctl enable $SERVICE_NAME 
-        systemctl start $SERVICE_NAME
-        systemctl status $SERVICE_NAME &> /var/log/catalogue.log_$(date +%Y-%m-%d)
-        validate $? "$SERVICE_NAME is up and running"
+        systemctl enable $1 
+        systemctl start $1
+        systemctl status $1 &> /var/log/catalogue.log_$(date +%Y-%m-%d)
+        validate $? "$1 is up and running"
 
     else
-        echo "creating $SERVICE_NAME service file..."
-        cp -p "$SERVICE_NAME.service" /etc/systemd/system/"$SERVICE_NAME.service"
-        validate $? "$SERVICE_NAME Service file copied"
+        echo "creating $1 service file..."
+        cp -p "$1.service" /etc/systemd/system/"$1.service"
+        validate $? "$1 Service file copied"
 
         systemctl daemon-reload
-        systemctl enable $SERVICE_NAME 
-        systemctl start $SERVICE_NAME
-        systemctl status $SERVICE_NAME &> /var/log/catalogue.log_$(date +%Y-%m-%d)
-        validate $? "$SERVICE_NAME is up and running"
+        systemctl enable $1 
+        systemctl start $1
+        systemctl status $1 &> /var/log/catalogue.log_$(date +%Y-%m-%d)
+        validate $? "$1 is up and running"
 
     fi
 }
