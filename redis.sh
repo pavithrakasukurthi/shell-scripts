@@ -3,10 +3,10 @@
 source ./common.sh
 user_auth
 
-dnf module disable redis -y
-dnf module enable redis:7 -y
+dnf module disable redis -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
+dnf module enable redis:7 -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
 
-dnf install redis -y 
+dnf install redis -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
 validate $? "Installed Redis"
 
 CURR_IP=$(grep bindIp /etc/redis/redis.conf | awk '{print $2}')
