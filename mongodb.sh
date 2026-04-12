@@ -19,7 +19,7 @@ if [ "$CURR_IP" == "0.0.0.0" ]; then
 else
     echo "taking backup of conf file"
     cp -p /etc/mongod.conf /etc/mongod.conf_$(date +%Y-%m-%d)
-    sed -i 's/bindIp: */bindIp: 0.0.0.0/' /etc/mongod.conf
+    sed -i 's/bindIp:.*/bindIp: 0.0.0.0/' /etc/mongod.conf
     echo "updated bindIp to 0.0.0.0 and restarting the service"
     systemctl restart mongod
 fi
