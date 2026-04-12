@@ -19,7 +19,7 @@ systemctl enable nginx
 
 systemctl start nginx 
 
-systemctl status nginx
+systemctl status nginx &> /var/log/catalogue.log_$(date +%Y-%m-%d)
 validate $? "Nginx is up and running"
 
 

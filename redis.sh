@@ -17,7 +17,7 @@ if [ "$CURR_IP" == "0.0.0.0" ]; then
 else
     echo "taking backup of conf file"
     cp -p /etc/mongod.conf /etc/mongod.conf_$(date +%Y-%m-%d)
-    sed -i 's/bindIp: */bindIp: 0.0.0.0/' /etc/mongod.conf
+    sed -i 's/bindIp:.*/bindIp: 0.0.0.0/' /etc/mongod.conf
     sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
     echo "updated bindIp to 0.0.0.0 and protected-mode restarting the service"
     systemctl restart mongod
@@ -25,5 +25,5 @@ fi
 
 systemctl enable redis 
 systemctl start redis 
-systemctl status redis
+systemctl status redis &> /var/log/catalogue.log_$(date +%Y-%m-%d)
 validate $? "Redis is up and running"
