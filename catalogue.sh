@@ -23,6 +23,8 @@ fi
 #creating catalogue service file and daemon-reloading, starting and enabling catalogue service
 service_file_check catalogue
 
+create_repo mongo
+
 #installing mongosh, loading content to the mongo server via client and validating
 install_mongo_client
 

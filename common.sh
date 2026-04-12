@@ -145,7 +145,7 @@ install_mongo_client(){
     else
         echo "Installing mongodb-mongosh"
         dnf install mongodb-mongosh -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
-        echo "mongosh installed successfully, running script in mongo server"
+        validate $? "mongosh installed successfully, running script in mongo server"
         mongosh --quiet --host mongodb.pavithra.sbs </app/db/master-data.js
         mongosh --quiet --host mongodb.pavithra.sbs --eval "show dbs"
         mongosh --quiet --host mongodb.pavithra.sbs --eval "use catalogue; show collections"
