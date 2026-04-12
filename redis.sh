@@ -20,7 +20,7 @@ else
     sed -i 's/bindIp:.*/bindIp: 0.0.0.0/' /etc/mongod.conf
     sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
     echo "updated bindIp to 0.0.0.0 and protected-mode restarting the service"
-    systemctl restart mongod
+    systemctl restart redis
 fi
 
 systemctl enable redis 
