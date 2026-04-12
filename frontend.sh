@@ -31,6 +31,6 @@ curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v
 cd /usr/share/nginx/html 
 unzip /tmp/frontend.zip &> /var/log/catalogue.log_$(date +%Y-%m-%d)
 
-cp -p nginx.conf /etc/nginx/nginx.conf
+cp -p /home/ec2-user/shell-scripts/nginx.conf /etc/nginx/nginx.conf
 
 systemctl restart nginx 
