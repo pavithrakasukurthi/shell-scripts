@@ -36,6 +36,10 @@ nodejs_installation(){
              dnf module enable nodejs:20 -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
              dnf install nodejs -y &> /var/log/catalogue.log_$(date +%Y-%m-%d) 
         fi
+    else
+        dnf module disable nodejs -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
+        dnf module enable nodejs:20 -y &> /var/log/catalogue.log_$(date +%Y-%m-%d)
+        dnf install nodejs -y &> /var/log/catalogue.log_$(date +%Y-%m-%d) 
     fi 
 }
 
