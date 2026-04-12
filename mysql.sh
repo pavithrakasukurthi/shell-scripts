@@ -19,3 +19,4 @@ validate $? "mysql is up and running"
 
 echo "setting up root password for mysql"
 mysql_secure_installation --set-root-pass RoboShop@1
+validate $? "Root password set successfully"
